@@ -1,8 +1,8 @@
 import Grid from "@mui/material/Grid";
-import Pagination from "@mui/material/Pagination";
 import Box from "@mui/material/Box";
 import PropertyCard from "../../components/PropertyCard";
 import Properties from "../../services/Properties";
+import PaginationLink from "../../components/PaginationLink";
 import { useCallback, useEffect, useState } from "react";
 
 const PropertiesPage = () => {
@@ -30,7 +30,7 @@ const PropertiesPage = () => {
   return (
     <>
       <Box pt={4} pl={4}>
-        <Pagination variant="outlined" count={pagination ? pagination.limit : 1} color="primary" />
+        <PaginationLink pageCount={pagination ? pagination.limit : 1} />
       </Box>
       <Box sx={{ flexGrow: 1, padding: 4 }}>
         <Grid
