@@ -82,7 +82,7 @@ const NavBar = () => {
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Link
-                    href={page}
+                    href={`/${page}`}
                     textAlign="center"
                     sx={{ textDecoration: "none", color: "inherit" }}
                   >
@@ -114,7 +114,7 @@ const NavBar = () => {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
-                href={page}
+                href={`/${page}`}
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}

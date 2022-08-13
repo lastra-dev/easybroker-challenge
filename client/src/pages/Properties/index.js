@@ -2,20 +2,26 @@ import Grid from "@mui/material/Grid";
 import Pagination from "@mui/material/Pagination";
 import Box from "@mui/material/Box";
 import PropertyCard from "../../components/PropertyCard";
+import Properties from "../../services/Properties";
+import { useCallback, useEffect, useState } from "react";
 
-const Properties = () => {
-  const dummyProperties = [
-    {
-      public_id: "EB-XXX123",
-      title: "Beautiful property in Condesa",
-      title_image_thumb:
-        "https://assets.stagingeb.com/property_images/25339/49442/EB-B5339_thumb.jpg?version=1555543334",
-      property_type: "Apartment",
-      location: "Condesa, Cuauhtemoc",
-    },
-  ];
+const PropertiesPage = () => {
+  const [properties, setProperties] = useState([]);
+  const [pagination, setPagination] = useState([]);
+  const pathArray = window.location.pathname.split('/');
+  const propertiesPage = pathArray[2];
 
-  const propertiesToRender = dummyProperties.map((property) => (
+  const fetchProperties = useCallback(async () => {
+    const properties = await Properties.fetchAllFromPage(propertiesPage);
+    setProperties(properties.content);
+    setPagination(properties.pagination);
+  }, [propertiesPage]);
+
+  useEffect(() => {
+    fetchProperties();
+  }, [fetchProperties]);
+
+  const propertiesToRender = properties.map((property) => (
     <Grid item xs={2} sm={4} md={2} key={property.public_id}>
       <PropertyCard property={property} />
     </Grid>
@@ -24,7 +30,7 @@ const Properties = () => {
   return (
     <>
       <Box pt={4} pl={4}>
-        <Pagination variant="outlined" count={10} color="primary" />
+        <Pagination variant="outlined" count={pagination ? pagination.limit : 1} color="primary" />
       </Box>
       <Box sx={{ flexGrow: 1, padding: 4 }}>
         <Grid
@@ -39,4 +45,4 @@ const Properties = () => {
   );
 };
 
-export default Properties;
+export default PropertiesPage;

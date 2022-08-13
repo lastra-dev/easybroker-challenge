@@ -26,7 +26,7 @@ const Home = () => {
         <CardMedia
           component="video"
           height="400"
-          image="/Videos/video1.mp4"
+          image="/static/videos/video1.mp4"
           alt="Houses recording"
           autoPlay
           muted
