@@ -1,9 +1,9 @@
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
 const PropertyCard = ({ property }) => {
   return (
@@ -14,7 +14,12 @@ const PropertyCard = ({ property }) => {
         alt="A property"
       />
       <CardContent>
-        <Typography gutterBottom variant="body1" fontWeight={500} component="div">
+        <Typography
+          gutterBottom
+          variant="body1"
+          fontWeight={500}
+          component="div"
+        >
           {property.title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
@@ -29,6 +34,6 @@ const PropertyCard = ({ property }) => {
       </CardActions>
     </Card>
   );
-}
+};
 
 export default PropertyCard;
