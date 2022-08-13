@@ -1,4 +1,5 @@
 import Grid from '@mui/material/Grid';
+import Pagination from '@mui/material/Pagination';
 import Box from '@mui/material/Box';
 import PropertyCard from "../../components/PropertyCard";
 
@@ -20,11 +21,16 @@ const Properties = () => {
   ));
 
   return (
-    <Box sx={{ flexGrow: 1, padding: 4 }}>
-      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-        {propertiesToRender}
-      </Grid>
-    </Box>
+    <>
+      <Box pt={4} pl={4}>
+        <Pagination variant="outlined" count={10} color="primary" />
+      </Box>
+      <Box sx={{ flexGrow: 1, padding: 4 }}>
+        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+          {propertiesToRender}
+        </Grid>
+      </Box>
+    </>
   );
 };
 
