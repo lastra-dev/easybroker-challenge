@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import CardMedia from "@mui/material/CardMedia";
 import Box from "@mui/material/Box";
 
-const Home = () => {
+const HomePage = () => {
   return (
     <Stack justifyContent="center" alignItems="center" spacing={4}>
       <Typography mt={4} align="center" variant="h1" fontWeight={500}>
@@ -38,4 +38,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;
