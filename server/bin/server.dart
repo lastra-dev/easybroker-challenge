@@ -1,21 +1,38 @@
 import 'dart:io';
 
+import 'package:server/eb_api/eb_api.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
 import 'package:shelf_router/shelf_router.dart';
+import 'package:http/http.dart' as http;
 
 // Configure routes.
 final _router = Router()
   ..get('/', _rootHandler)
-  ..get('/echo/<message>', _echoHandler);
+  ..get('/properties/<page>', _propertiesHandler)
+  ..get('/property/<id>', _propertyHandler);
 
 Response _rootHandler(Request req) {
-  return Response.ok('Hello, World!\n');
+  return Response.ok('EasyBroker API with Dart!');
 }
 
-Response _echoHandler(Request request) {
+Response _propertyHandler(Request request) {
   final message = request.params['message'];
-  return Response.ok('$message\n');
+  return Response.ok('$message\n',
+      headers: {'Content-Type': 'application/json'});
+}
+
+Future<Response> _propertiesHandler(Request request) async {
+  var properties = Properties(client: http.Client());
+  try {
+    final page = int.parse(request.params['page'] ?? '1');
+    return Response.ok(
+      await properties.getAllFromPage(page),
+      headers: {'Content-Type': 'application/json'},
+    );
+  } catch (_) {
+    return Response.notFound('Route not found');
+  }
 }
 
 void main(List<String> args) async {
