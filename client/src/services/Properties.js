@@ -1,10 +1,9 @@
 import api from "./api";
 
 class Properties {
-  // void -> List<Property>
-  static async fetchPublished() {
+  static async fetchAllFromPage(page) {
     try {
-      const response = await api.get("/properties");
+      const response = await api.get(`/properties/${page}`);
       return response.data;
     } catch (error) {
       console.log(error.response.data);

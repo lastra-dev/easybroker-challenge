@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://api.stagingeb.com/v1",
-  headers: { "X-Authorization": "l7u502p8v46ba3ppgvj5y2aad50lb9" },
+  baseURL: "http://127.0.0.1:8080",
 });
 
 export default api;

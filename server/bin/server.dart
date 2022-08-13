@@ -12,6 +12,14 @@ final _router = Router()
   ..get('/properties/<page>', _propertiesHandler)
   ..get('/property/<id>', _propertyHandler);
 
+// Accept CORS.
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST',
+  'Access-Control-Allow-Headers': '*',
+  'Content-Type': 'application/json'
+};
+
 Response _rootHandler(Request req) {
   return Response.ok('EasyBroker API with Dart!');
 }
@@ -28,7 +36,7 @@ Future<Response> _propertiesHandler(Request request) async {
     final page = int.parse(request.params['page'] ?? '1');
     return Response.ok(
       await properties.getAllFromPage(page),
-      headers: {'Content-Type': 'application/json'},
+      headers: corsHeaders,
     );
   } catch (_) {
     return Response.notFound('Route not found');
