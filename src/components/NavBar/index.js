@@ -28,7 +28,7 @@ const NavBar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Container maxWidth="l">
         <Toolbar disableGutters>
           <HouseIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
