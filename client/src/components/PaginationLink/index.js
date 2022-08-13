@@ -1,8 +1,8 @@
-import Pagination from '@mui/material/Pagination';
-import PaginationItem from '@mui/material/PaginationItem';
+import Pagination from "@mui/material/Pagination";
+import PaginationItem from "@mui/material/PaginationItem";
 
 const PaginationLink = ({ pageCount }) => {
-  const pathArray = window.location.pathname.split('/');
+  const pathArray = window.location.pathname.split("/");
   const propertiesPage = pathArray[2];
 
   const page = parseInt(propertiesPage);
@@ -13,13 +13,10 @@ const PaginationLink = ({ pageCount }) => {
       page={page}
       count={pageCount}
       renderItem={(item) => (
-        <PaginationItem
-          href={`/properties/${item.page}`}
-          {...item}
-        />
+        <PaginationItem href={`/properties/${item.page}`} {...item} />
       )}
     />
   );
-}
+};
 
 export default PaginationLink;

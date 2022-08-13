@@ -10,7 +10,11 @@ const PropertyCard = ({ property }) => {
     <Card sx={{ maxWidth: 300 }}>
       <CardMedia
         component="img"
-        image={property.title_image_thumb ? property.title_image_thumb : '/static/images/house.png'}
+        image={
+          property.title_image_thumb
+            ? property.title_image_thumb
+            : "/static/images/house.png"
+        }
         alt="A property"
       />
       <CardContent>

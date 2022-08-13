@@ -8,7 +8,7 @@ import { useCallback, useEffect, useState } from "react";
 const PropertiesPage = () => {
   const [properties, setProperties] = useState([]);
   const [pagination, setPagination] = useState([]);
-  const pathArray = window.location.pathname.split('/');
+  const pathArray = window.location.pathname.split("/");
   const propertiesPage = pathArray[2];
 
   const fetchProperties = useCallback(async () => {
