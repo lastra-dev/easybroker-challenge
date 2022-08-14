@@ -5,7 +5,7 @@ class Properties {
 
   final http.Client client;
 
-  Future<String> getAllFromPage(int page) async {
+  Future<String> fromPage(int page) async {
     var queryParameters = {
       'limit': '15',
       'search[statuses][]': 'published',

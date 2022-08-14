@@ -35,7 +35,7 @@ Future<Response> _propertiesHandler(Request request) async {
   try {
     final page = int.parse(request.params['page'] ?? '1');
     return Response.ok(
-      await properties.getAllFromPage(page),
+      await properties.fromPage(page),
       headers: corsHeaders,
     );
   } catch (_) {

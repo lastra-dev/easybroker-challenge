@@ -24,7 +24,7 @@ void main() {
     dataSource = Properties(client: mockHttpClient);
   });
 
-  test('Properties.getAllFromPage() returns all properties from the given page',
+  test('Properties.fromPage() returns all properties from the given page',
       () async {
     // arange
     setUpHttpClientSuccess200(
@@ -34,7 +34,7 @@ void main() {
     );
 
     // act
-    var result = await dataSource.getAllFromPage(tPage);
+    var result = await dataSource.fromPage(tPage);
 
     // assert
     expect(result, jsonProperties);
