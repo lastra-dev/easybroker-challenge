@@ -1,3 +1,4 @@
+import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import PropertyCard from "components/PropertyCard";
@@ -29,20 +30,19 @@ const PropertiesPage = () => {
   ));
 
   return (
-    <>
-      <Box pt={4} pl={4}>
+    <Box padding={2}>
+      <Stack justifyContent="center" alignItems="center" spacing={2}>
         <PaginationLink pageCount={pagination ? pagination.limit : 1} />
-      </Box>
-      <Box sx={{ flexGrow: 1, padding: 4 }}>
         <Grid
+          item
           container
           spacing={{ xs: 2, md: 3 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
           {propertiesToRender}
         </Grid>
-      </Box>
-    </>
+      </Stack>
+    </Box>
   );
 };
 
