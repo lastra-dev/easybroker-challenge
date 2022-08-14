@@ -3,7 +3,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:http/http.dart' as http;
 import 'package:server/eb_api/property.dart';
 
-import '../fixtures/fixture_reader.dart';
+import '../../fixtures/fixture_reader.dart';
 
 class MockHttpClient extends Mock implements http.Client {}
 
