@@ -29,7 +29,9 @@ const PropertyPage = () => {
         <Grid item xs={8} lg={6}>
           <Box
             component="img"
-            src={property?.property_images?.[0]?.url || ""}
+            src={
+              property?.property_images?.[0]?.url || "/static/images/house.png"
+            }
             alt="House view"
             sx={{ borderRadius: "16px", width: "100%" }}
           />

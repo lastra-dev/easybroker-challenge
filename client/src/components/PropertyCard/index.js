@@ -10,11 +10,7 @@ const PropertyCard = ({ property }) => {
     <Card sx={{ maxWidth: 300 }}>
       <CardMedia
         component="img"
-        image={
-          property.title_image_thumb
-            ? property.title_image_thumb
-            : "/static/images/house.png"
-        }
+        image={property?.title_image_thumb || "/static/images/house.png"}
         alt="A property"
       />
       <CardContent>
@@ -24,17 +20,25 @@ const PropertyCard = ({ property }) => {
           fontWeight={500}
           component="div"
         >
-          {property.title}
+          {property?.title || "Unkown house"}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {property.property_type}
+          {property?.property_type || "Unkown property type"}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {property.location}
+          {property?.location || "Unkown location"}
+        </Typography>
+        <Typography variant="caption" color="text.secondary">
+          {property?.public_id || "Unkown ID"}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <Button
+          href={property?.public_id ? `/property/${property.public_id}` : null}
+          size="small"
+        >
+          Learn More
+        </Button>
       </CardActions>
     </Card>
   );
