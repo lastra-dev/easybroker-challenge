@@ -20,20 +20,29 @@ const corsHeaders = {
   'Content-Type': 'application/json'
 };
 
+const badRequest = 'bad_request';
+
 Response _rootHandler(Request req) {
   return Response.ok('EasyBroker API with Dart!');
 }
 
-Response _propertyHandler(Request request) {
-  final message = request.params['message'];
-  return Response.ok('$message\n',
-      headers: {'Content-Type': 'application/json'});
+Future<Response> _propertyHandler(Request request) async {
+  var property = Property(client: http.Client());
+  try {
+    var id = request.params['id'];
+    return Response.ok(
+      await property.fromId(id ?? badRequest),
+      headers: corsHeaders,
+    );
+  } catch (_) {
+    return Response.notFound('Route not found');
+  }
 }
 
 Future<Response> _propertiesHandler(Request request) async {
   var properties = Properties(client: http.Client());
   try {
-    final page = int.parse(request.params['page'] ?? '1');
+    var page = int.parse(request.params['page'] ?? badRequest);
     return Response.ok(
       await properties.fromPage(page),
       headers: corsHeaders,
@@ -45,13 +54,13 @@ Future<Response> _propertiesHandler(Request request) async {
 
 void main(List<String> args) async {
   // Use any available host or container IP (usually `0.0.0.0`).
-  final ip = InternetAddress.anyIPv4;
+  var ip = InternetAddress.anyIPv4;
 
   // Configure a pipeline that logs requests.
-  final handler = Pipeline().addMiddleware(logRequests()).addHandler(_router);
+  var handler = Pipeline().addMiddleware(logRequests()).addHandler(_router);
 
   // For running in containers, we respect the PORT environment variable.
-  final port = int.parse(Platform.environment['PORT'] ?? '8080');
-  final server = await serve(handler, ip, port);
+  var port = int.parse(Platform.environment['PORT'] ?? '8080');
+  var server = await serve(handler, ip, port);
   print('Server listening on port ${server.port}');
 }
