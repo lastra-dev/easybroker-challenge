@@ -1,27 +1,14 @@
-import 'package:http/http.dart' as http;
 import 'package:server/eb_api/properties.dart';
 import 'package:test/test.dart';
-import 'package:mocktail/mocktail.dart';
 
 import '../../fixtures/fixture_reader.dart';
-
-class MockHttpClient extends Mock implements http.Client {}
+import '../../mock_http_client.dart';
 
 void main() {
   late MockHttpClient mockHttpClient;
   late Properties dataSource;
-
-  void setUpHttpClientSuccess200(Uri url) {
-    when(() => mockHttpClient.get(url, headers: any(named: 'headers')))
-        .thenAnswer(
-      (_) async => http.Response(
-        fixture('properties_page_one.json'),
-        200,
-      ),
-    );
-  }
-
-  var jsonProperties = fixture('properties_page_one.json');
+  const propertiesFixture = 'properties_page_one.json';
+  var jsonProperties = fixture(propertiesFixture);
 
   const tPage = 1;
   var queryParameters = {
@@ -40,7 +27,11 @@ void main() {
   test('Properties.getAllFromPage() returns all properties from the given page',
       () async {
     // arange
-    setUpHttpClientSuccess200(url);
+    setUpHttpClientSuccess200(
+      url: url,
+      mockHttpClient: mockHttpClient,
+      responseFixture: propertiesFixture,
+    );
 
     // act
     var result = await dataSource.getAllFromPage(tPage);
