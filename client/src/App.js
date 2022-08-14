@@ -1,5 +1,5 @@
-import AppRoutes from "./AppRoutes";
-import NavBar from "./components/NavBar";
+import AppRoutes from "AppRoutes";
+import NavBar from "components/NavBar";
 
 function App() {
   return (

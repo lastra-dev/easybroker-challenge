@@ -15,9 +15,7 @@ const dummyProperty = {
 
 const PropertyPage = () => {
   return (
-    <Box
-      margin={4}
-    >
+    <Box margin={4}>
       <Grid container justifyContent="center" alignItems="center" spacing={4}>
         <Grid item xs={8} lg={6}>
           <Box

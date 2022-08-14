@@ -1,15 +1,16 @@
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import PropertyCard from "../../components/PropertyCard";
-import Properties from "../../services/Properties";
-import PaginationLink from "../../components/PaginationLink";
+import PropertyCard from "components/PropertyCard";
+import Properties from "services/Properties";
+import PaginationLink from "components/PaginationLink";
 import { useCallback, useEffect, useState } from "react";
 
 const PropertiesPage = () => {
+  const PROPERTY_PAGE_POSITION = 2;
   const [properties, setProperties] = useState([]);
   const [pagination, setPagination] = useState([]);
   const pathArray = window.location.pathname.split("/");
-  const propertiesPage = pathArray[2];
+  const propertiesPage = pathArray[PROPERTY_PAGE_POSITION];
 
   const fetchProperties = useCallback(async () => {
     const properties = await Properties.fetchAllFromPage(propertiesPage);
