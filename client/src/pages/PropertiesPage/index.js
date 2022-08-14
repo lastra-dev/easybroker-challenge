@@ -13,7 +13,7 @@ const PropertiesPage = () => {
   const propertiesPage = pathArray[PROPERTY_PAGE_POSITION];
 
   const fetchProperties = useCallback(async () => {
-    const properties = await Properties.fetchAllFromPage(propertiesPage);
+    const properties = await Properties.fromPage(propertiesPage);
     setProperties(properties.content);
     setPagination(properties.pagination);
   }, [propertiesPage]);
