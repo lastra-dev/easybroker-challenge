@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import HouseIcon from "@mui/icons-material/House";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import DescriptionIcon from '@mui/icons-material/Description';
+import DescriptionIcon from "@mui/icons-material/Description";
 import grey from "@mui/material/colors/grey";
 
 const dummyProperty = {
@@ -50,8 +50,12 @@ const PropertyPage = () => {
           </Grid>
           <Grid item container alignItems="center">
             <DescriptionIcon color="primary" sx={{ fontSize: 13 }} />
-            <Typography color="primary" variant="caption">DESCRIPTION</Typography>
-            <Typography align="justify" variant="body1">{dummyProperty.description}</Typography>
+            <Typography color="primary" variant="caption">
+              DESCRIPTION
+            </Typography>
+            <Typography align="justify" variant="body1">
+              {dummyProperty.description}
+            </Typography>
           </Grid>
         </Grid>
       </Grid>
