@@ -7,9 +7,10 @@ import Typography from "@mui/material/Typography";
 
 const PropertyCard = ({ property }) => {
   return (
-    <Card sx={{ maxWidth: 300 }}>
+    <Card sx={{ maxWidth: 300, height: 480,}}>
       <CardMedia
         component="img"
+        height="200"
         image={property?.title_image_thumb || "/static/images/house.png"}
         alt="A property"
       />

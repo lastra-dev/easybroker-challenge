@@ -24,7 +24,7 @@ const PropertiesPage = () => {
   }, [fetchProperties]);
 
   const propertiesToRender = properties.map((property) => (
-    <Grid item xs={2} sm={4} md={2} key={property.public_id}>
+    <Grid item xs={6} sm={4} md={3} lg={2} key={property.public_id}>
       <PropertyCard property={property} />
     </Grid>
   ));
@@ -36,8 +36,7 @@ const PropertiesPage = () => {
         <Grid
           item
           container
-          spacing={{ xs: 2, md: 3 }}
-          columns={{ xs: 4, sm: 8, md: 12 }}
+          spacing={2}
         >
           {propertiesToRender}
         </Grid>
