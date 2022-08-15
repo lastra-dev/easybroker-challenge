@@ -1,5 +1,5 @@
 const success = {
-  "status": "successful"
-}
+  status: "successful",
+};
 
 export default success;

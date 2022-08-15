@@ -71,7 +71,7 @@ const PropertyPage = () => {
           </Grid>
         </Grid>
       </Grid>
-      <ContactForm />
+      <ContactForm propertyId={propertyId} />
     </Box>
   );
 };
