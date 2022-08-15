@@ -136,9 +136,11 @@ const NavBar = ({ handlePaletteMode, paletteMode }) => {
                 <GitHubIcon />
               </IconButton>
             </Tooltip>
-            <IconButton size="large" onClick={handlePaletteMode} color="inherit">
-              {paletteMode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-            </IconButton>
+            <Tooltip title={`Switch to ${paletteMode === 'dark' ? 'light' : 'dark'} mode`} arrow>
+              <IconButton size="large" onClick={handlePaletteMode} color="inherit">
+                {paletteMode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+              </IconButton>
+            </ Tooltip>
           </Box>
         </Toolbar>
       </Container>
