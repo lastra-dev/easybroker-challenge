@@ -30,11 +30,17 @@ Response _rootHandler(Request req) {
 }
 
 Future<Response> _propertyHandler(Request request) async {
-  var property = Property(client: http.Client());
+  var property = PropertyData(client: http.Client());
   try {
+    // Handle incoming request.
     var id = request.params['id'];
+
+    // Send request to EB API.
+    var response = await property.fromId(id ?? badRequest);
+
+    // Return response to client.
     return Response.ok(
-      await property.fromId(id ?? badRequest),
+      response.body,
       headers: corsHeaders,
     );
   } catch (_) {
@@ -43,11 +49,17 @@ Future<Response> _propertyHandler(Request request) async {
 }
 
 Future<Response> _propertiesHandler(Request request) async {
-  var properties = Properties(client: http.Client());
+  var properties = PropertiesData(client: http.Client());
   try {
+    // Handle incoming request.
     var page = int.parse(request.params['page'] ?? badRequest);
+
+    // Send request to EB API.
+    var response = await properties.fromPage(page);
+
+    // Return response to client.
     return Response.ok(
-      await properties.fromPage(page),
+      response.body,
       headers: corsHeaders,
     );
   } catch (_) {
@@ -56,12 +68,12 @@ Future<Response> _propertiesHandler(Request request) async {
 }
 
 Future<Response> _contactHandler(Request request) async {
-  var contact = Contact(client: http.Client());
+  var contact = ContactRequest(client: http.Client());
   try {
     // Handle incoming request.
     var body = jsonDecode(await request.readAsString());
 
-    // Send body to EB API.
+    // Send request to EB API.
     var response = await contact.sendMessage(ContactBody.fromJson(body));
 
     // Return response to client.

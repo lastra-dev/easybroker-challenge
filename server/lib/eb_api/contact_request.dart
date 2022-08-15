@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:server/models/contact_body.dart';
 
-class Contact {
-  Contact({required this.client});
+class ContactRequest {
+  ContactRequest({required this.client});
 
   final http.Client client;
 

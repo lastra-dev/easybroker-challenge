@@ -1,4 +1,4 @@
-import 'package:server/eb_api/properties.dart';
+import 'package:server/eb_api/properties_data.dart';
 import 'package:test/test.dart';
 
 import '../../fixtures/fixture_reader.dart';
@@ -6,22 +6,23 @@ import '../../mock_http_client.dart';
 
 void main() {
   late MockHttpClient mockHttpClient;
-  late Properties dataSource;
+  late PropertiesData dataSource;
+
   const propertiesFixture = 'properties_page_one.json';
   var jsonProperties = fixture(propertiesFixture);
 
-  const tPage = 1;
+  const page = 1;
   var queryParameters = {
     'limit': '15',
     'search[statuses][]': 'published',
-    'page': tPage.toString(),
+    'page': page.toString(),
   };
   var url = Uri.https('api.stagingeb.com', '/v1/properties', queryParameters);
 
   setUp(() async {
     // Mock data source.
     mockHttpClient = MockHttpClient();
-    dataSource = Properties(client: mockHttpClient);
+    dataSource = PropertiesData(client: mockHttpClient);
   });
 
   test('Properties.fromPage() returns all properties from the given page',
@@ -34,9 +35,9 @@ void main() {
     );
 
     // act
-    var result = await dataSource.fromPage(tPage);
+    var response = await dataSource.fromPage(page);
 
     // assert
-    expect(result, jsonProperties);
+    expect(response.body, jsonProperties);
   });
 }

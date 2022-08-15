@@ -1,11 +1,11 @@
 import 'package:http/http.dart' as http;
 
-class Property {
-  const Property({required this.client});
+class PropertyData {
+  const PropertyData({required this.client});
 
   final http.Client client;
 
-  Future<String> fromId(String id) async {
+  Future<http.Response> fromId(String id) async {
     var url = Uri.https('api.stagingeb.com', '/v1/properties/$id');
 
     var response = await client.get(
@@ -21,6 +21,6 @@ class Property {
       throw Exception("Something happened...");
     }
 
-    return response.body;
+    return response;
   }
 }

@@ -1,11 +1,11 @@
 import 'package:http/http.dart' as http;
 
-class Properties {
-  const Properties({required this.client});
+class PropertiesData {
+  const PropertiesData({required this.client});
 
   final http.Client client;
 
-  Future<String> fromPage(int page) async {
+  Future<http.Response> fromPage(int page) async {
     var queryParameters = {
       'limit': '15',
       'search[statuses][]': 'published',
@@ -25,6 +25,6 @@ class Properties {
       throw Exception("Something happened...");
     }
 
-    return response.body;
+    return response;
   }
 }

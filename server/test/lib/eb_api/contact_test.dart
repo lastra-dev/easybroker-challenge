@@ -1,4 +1,4 @@
-import 'package:server/eb_api/contact.dart';
+import 'package:server/eb_api/contact_request.dart';
 import 'package:test/test.dart';
 import 'package:server/models/contact_body.dart';
 
@@ -6,10 +6,10 @@ import '../../mock_http_client.dart';
 
 void main() {
   late MockHttpClient mockHttpClient;
-  late Contact dataSource;
+  late ContactRequest dataSource;
   const successFixture = 'success.json';
 
-  var tBody = ContactBody(
+  var body = ContactBody(
     name: 'Oscar',
     phone: '1234567890',
     email: 'test@example.com',
@@ -22,7 +22,7 @@ void main() {
   setUp(() async {
     // Mock data source.
     mockHttpClient = MockHttpClient();
-    dataSource = Contact(client: mockHttpClient);
+    dataSource = ContactRequest(client: mockHttpClient);
   });
 
   test('Properties.fromPage() returns all properties from the given page',
@@ -35,7 +35,7 @@ void main() {
     );
 
     // act
-    var response = await dataSource.sendMessage(tBody);
+    var response = await dataSource.sendMessage(body);
 
     // assert
     expect(response.statusCode, 200);

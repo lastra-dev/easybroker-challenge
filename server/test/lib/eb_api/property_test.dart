@@ -1,20 +1,20 @@
 import 'dart:convert';
 import 'package:test/test.dart';
-import 'package:server/eb_api/property.dart';
+import 'package:server/eb_api/property_data.dart';
 import '../../mock_http_client.dart';
 
 void main() {
   late MockHttpClient mockHttpClient;
-  late Property dataSource;
+  late PropertyData dataSource;
 
-  const tId = 'EB-B5339';
+  const id = 'EB-B5339';
   const responseFixture = 'property.json';
-  var url = Uri.https('api.stagingeb.com', '/v1/properties/$tId');
+  var url = Uri.https('api.stagingeb.com', '/v1/properties/$id');
 
   setUp(() async {
     // Mock data source.
     mockHttpClient = MockHttpClient();
-    dataSource = Property(client: mockHttpClient);
+    dataSource = PropertyData(client: mockHttpClient);
   });
 
   test('Property.fromId() should return the Property with that ID', () async {
@@ -26,10 +26,10 @@ void main() {
     );
 
     // act
-    var encodedProperty = await dataSource.fromId(tId);
-    var jsonProperty = jsonDecode(encodedProperty) as Map<String, dynamic>;
+    var response = await dataSource.fromId(id);
+    var jsonProperty = jsonDecode(response.body) as Map<String, dynamic>;
 
     // assert
-    expect(jsonProperty['public_id'], tId);
+    expect(jsonProperty['public_id'], id);
   });
 }
