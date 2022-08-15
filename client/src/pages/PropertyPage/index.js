@@ -3,7 +3,6 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import HouseIcon from "@mui/icons-material/House";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import DescriptionIcon from "@mui/icons-material/Description";
 import Property from "services/Property";
 import ContactForm from "components/ContactForm";
 import { useCallback, useEffect, useState } from "react";
@@ -25,13 +24,21 @@ const PropertyPage = () => {
   }, [fetchProperty]);
 
   return (
-    <Box padding={2}>
+    <Box
+      component={Grid}
+      container
+      alignItems="center"
+      justifyContent="center"
+      direction="column"
+      padding={2}
+    >
       <Grid container justifyContent="center" alignItems="center" spacing={4}>
         <Grid item xs={8} lg={5}>
           <Box
             component="img"
             src={
-              property?.property_images?.[0]?.url || "/static/images/defaulthouse.jpg"
+              property?.property_images?.[0]?.url ||
+              "/static/images/defaulthouse.jpg"
             }
             alt="House view"
             sx={{ borderRadius: "8px", width: "100%" }}
@@ -60,8 +67,7 @@ const PropertyPage = () => {
               {property?.location?.name || ""}
             </Typography>
           </Grid>
-          <Grid item container alignItems="center">
-            <DescriptionIcon color="primary" sx={{ fontSize: 13 }} />
+          <Grid item container direction="column">
             <Typography color="primary" variant="caption">
               DESCRIPTION
             </Typography>

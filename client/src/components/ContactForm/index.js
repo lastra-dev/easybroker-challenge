@@ -58,20 +58,20 @@ const ContactForm = ({ propertyId }) => {
   };
 
   return (
-    <Box mt={8} sx={{ width: 600, maxWidth: "100%" }}>
-      <Typography color="primary" variant="h4">
+    <Box mt={12} sx={{ width: 600, maxWidth: "100%" }}>
+      <Typography align="center" color="primary" variant="h4">
         Contact the propietary
       </Typography>
-      {errorAlertIsShown &&
+      {errorAlertIsShown && (
         <Box component={Alert} mt={1} variant="filled" severity="error">
           Something happened, please try again later...
         </Box>
-      }
-      {successAlertIsShown &&
+      )}
+      {successAlertIsShown && (
         <Box component={Alert} mt={1} variant="filled" severity="success">
           Message sent successfully!
         </Box>
-      }
+      )}
       <TextField
         margin="normal"
         error={nameHasError}

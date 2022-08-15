@@ -35,7 +35,7 @@ const HomePage = () => {
           loop
           sx={{ borderRadius: "8px", width: "900px", maxWidth: "100%" }}
         />
-        <Box sx={{ height:"90px"}} />
+        <Box sx={{ height: "90px" }} />
       </Stack>
     </Box>
   );

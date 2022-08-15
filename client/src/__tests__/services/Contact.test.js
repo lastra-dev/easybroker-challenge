@@ -12,7 +12,7 @@ const tBody = {
 
 test("Expect Contact.sendMessage() to POST a message", async () => {
   // act
-  const response = await Contact.sendMessage(tBody)
+  const response = await Contact.sendMessage(tBody);
 
   // assert
   expect(response.data).toStrictEqual(success);

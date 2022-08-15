@@ -13,8 +13,8 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import HouseIcon from "@mui/icons-material/House";
 import Link from "@mui/material/Link";
-import Brightness7Icon from "@mui/icons-material/Brightness7"
-import Brightness4Icon from "@mui/icons-material/Brightness4"
+import Brightness7Icon from "@mui/icons-material/Brightness7";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
 
 const pages = ["properties"];
 
@@ -136,11 +136,24 @@ const NavBar = ({ handlePaletteMode, paletteMode }) => {
                 <GitHubIcon />
               </IconButton>
             </Tooltip>
-            <Tooltip title={`Switch to ${paletteMode === 'dark' ? 'light' : 'dark'} mode`} arrow>
-              <IconButton size="large" onClick={handlePaletteMode} color="inherit">
-                {paletteMode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+            <Tooltip
+              title={`Switch to ${
+                paletteMode === "dark" ? "light" : "dark"
+              } mode`}
+              arrow
+            >
+              <IconButton
+                size="large"
+                onClick={handlePaletteMode}
+                color="inherit"
+              >
+                {paletteMode === "dark" ? (
+                  <Brightness7Icon />
+                ) : (
+                  <Brightness4Icon />
+                )}
               </IconButton>
-            </ Tooltip>
+            </Tooltip>
           </Box>
         </Toolbar>
       </Container>
