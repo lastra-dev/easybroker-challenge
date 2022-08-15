@@ -76,6 +76,7 @@ const ContactForm = ({ propertyId }) => {
         margin="normal"
         error={nameHasError}
         fullWidth
+        placeholder="John Doe"
         required
         id="outlined-basic"
         label="Name"
@@ -88,6 +89,7 @@ const ContactForm = ({ propertyId }) => {
         margin="normal"
         error={phoneHasError}
         fullWidth
+        placeholder="+52 (XXX) XXX-XXXX"
         required
         id="outlined-basic"
         type="number"
@@ -101,6 +103,7 @@ const ContactForm = ({ propertyId }) => {
         margin="normal"
         error={emailHasError}
         fullWidth
+        placeholder="john.doe@example.com"
         required
         id="outlined-basic"
         type="email"
@@ -115,6 +118,7 @@ const ContactForm = ({ propertyId }) => {
         rows={6}
         error={messageHasError}
         fullWidth
+        placeholder="Message body"
         required
         multiline
         id="outlined-basic"
