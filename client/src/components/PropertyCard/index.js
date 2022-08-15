@@ -11,7 +11,7 @@ const PropertyCard = ({ property }) => {
       <CardMedia
         component="img"
         height="200"
-        image={property?.title_image_thumb || "/static/images/house.png"}
+        image={property?.title_image_thumb || "/static/images/defaulthouse.jpg"}
         alt="A property"
       />
       <CardContent>

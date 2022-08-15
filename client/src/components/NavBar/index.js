@@ -13,10 +13,12 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import HouseIcon from "@mui/icons-material/House";
 import Link from "@mui/material/Link";
+import Brightness7Icon from "@mui/icons-material/Brightness7"
+import Brightness4Icon from "@mui/icons-material/Brightness4"
 
 const pages = ["properties"];
 
-const NavBar = () => {
+const NavBar = ({ handlePaletteMode, paletteMode }) => {
   const [anchorElNav, setAnchorElNav] = useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -130,11 +132,13 @@ const NavBar = () => {
                 target="_blank"
                 color="inherit"
                 size="large"
-                sx={{ p: 0 }}
               >
                 <GitHubIcon />
               </IconButton>
             </Tooltip>
+            <IconButton size="large" onClick={handlePaletteMode} color="inherit">
+              {paletteMode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+            </IconButton>
           </Box>
         </Toolbar>
       </Container>

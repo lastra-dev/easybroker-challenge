@@ -31,7 +31,7 @@ const PropertyPage = () => {
           <Box
             component="img"
             src={
-              property?.property_images?.[0]?.url || "/static/images/house.png"
+              property?.property_images?.[0]?.url || "/static/images/defaulthouse.jpg"
             }
             alt="House view"
             sx={{ borderRadius: "8px", width: "100%" }}
