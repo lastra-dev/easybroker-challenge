@@ -15,7 +15,8 @@ const PropertyPage = () => {
   const [property, setProperty] = useState({});
 
   const fetchProperty = useCallback(async () => {
-    const property = await PropertyData.fromId(propertyId);
+    const response = await PropertyData.fromId(propertyId);
+    const property = response.data;
     setProperty(property);
   }, [propertyId]);
 
