@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Contact from "services/Contact";
+import Alert from "@mui/material/Alert";
 import { useState } from "react";
 
 const ContactForm = ({ propertyId }) => {
@@ -16,12 +17,15 @@ const ContactForm = ({ propertyId }) => {
   const [emailHasError, setEmailHasError] = useState(false);
   const [messageHasError, setMessageHasError] = useState(false);
 
+  const [errorAlertIsShown, setErrorAlertIsShown] = useState(false);
+  const [successAlertIsShown, setSuccessAlertIsShown] = useState(false);
+
   const handleChange = (e, setField) => {
     setField(e.target.value);
   };
 
   const sendMessage = async () => {
-    await Contact.sendMessage({
+    return await Contact.sendMessage({
       name: name,
       phone: phone,
       email: email,
@@ -38,12 +42,19 @@ const ContactForm = ({ propertyId }) => {
     setMessageHasError(message === "");
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     validateForm();
     if (name === "" || phone === "" || email === "" || message === "") {
       return;
     }
-    sendMessage();
+    const response = await sendMessage();
+    if (response.status === 200) {
+      setSuccessAlertIsShown(true);
+      setErrorAlertIsShown(false);
+    } else {
+      setErrorAlertIsShown(true);
+      setSuccessAlertIsShown(false);
+    }
   };
 
   return (
@@ -51,6 +62,16 @@ const ContactForm = ({ propertyId }) => {
       <Typography color="primary" variant="h4">
         Contact the propietary
       </Typography>
+      {errorAlertIsShown &&
+        <Box component={Alert} mt={1} variant="filled" severity="error">
+          Something happened, please try again later...
+        </Box>
+      }
+      {successAlertIsShown &&
+        <Box component={Alert} mt={1} variant="filled" severity="success">
+          Message sent successfully!
+        </Box>
+      }
       <TextField
         margin="normal"
         error={nameHasError}

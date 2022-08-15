@@ -4,7 +4,7 @@ class Contact {
   static async sendMessage(body) {
     try {
       const response = await api.post("/contact", JSON.stringify(body));
-      return response.data;
+      return response;
     } catch (error) {
       console.log(error.response.data);
     }
