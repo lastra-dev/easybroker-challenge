@@ -11,12 +11,16 @@ const ContactForm = ({ propertyId }) => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
+  const [nameHasError, setNameHasError] = useState(false);
+  const [phoneHasError, setPhoneHasError] = useState(false);
+  const [emailHasError, setEmailHasError] = useState(false);
+  const [messageHasError, setMessageHasError] = useState(false);
+
   const handleChange = (e, setField) => {
     setField(e.target.value);
-    console.log(e.target.value);
   };
 
-  const handleSubmit = async () => {
+  const sendMessage = async () => {
     await Contact.sendMessage({
       name: name,
       phone: phone,
@@ -27,6 +31,21 @@ const ContactForm = ({ propertyId }) => {
     });
   };
 
+  const validateForm = () => {
+    setNameHasError(name === "");
+    setPhoneHasError(phone === "");
+    setEmailHasError(email === "");
+    setMessageHasError(message === "");
+  };
+
+  const handleSubmit = () => {
+    validateForm();
+    if (name === "" || phone === "" || email === "" || message === "") {
+      return;
+    }
+    sendMessage();
+  };
+
   return (
     <Box mt={8} sx={{ width: 600, maxWidth: "100%" }}>
       <Typography color="primary" variant="h4">
@@ -34,6 +53,7 @@ const ContactForm = ({ propertyId }) => {
       </Typography>
       <TextField
         margin="normal"
+        error={nameHasError}
         fullWidth
         required
         id="outlined-basic"
@@ -45,6 +65,7 @@ const ContactForm = ({ propertyId }) => {
       />
       <TextField
         margin="normal"
+        error={phoneHasError}
         fullWidth
         required
         id="outlined-basic"
@@ -57,6 +78,7 @@ const ContactForm = ({ propertyId }) => {
       />
       <TextField
         margin="normal"
+        error={emailHasError}
         fullWidth
         required
         id="outlined-basic"
@@ -70,6 +92,7 @@ const ContactForm = ({ propertyId }) => {
       <TextField
         margin="normal"
         rows={6}
+        error={messageHasError}
         fullWidth
         required
         multiline
