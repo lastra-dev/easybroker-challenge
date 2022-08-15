@@ -7,11 +7,11 @@ import PaginationLink from "components/PaginationLink";
 import { useCallback, useEffect, useState } from "react";
 
 const PropertiesPage = () => {
-  const PROPERTY_PAGE_POSITION = 2;
+  const PROPERTIES_PAGE_POSITION = 2;
   const [properties, setProperties] = useState([]);
   const [pagination, setPagination] = useState([]);
   const pathArray = window.location.pathname.split("/");
-  const propertiesPage = pathArray[PROPERTY_PAGE_POSITION];
+  const propertiesPage = pathArray[PROPERTIES_PAGE_POSITION];
 
   const fetchProperties = useCallback(async () => {
     const response = await PropertiesData.fromPage(propertiesPage);

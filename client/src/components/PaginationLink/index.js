@@ -2,8 +2,9 @@ import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 
 const PaginationLink = ({ pageCount }) => {
+  const PROPERTIES_PAGE_POSITION = 2;
   const pathArray = window.location.pathname.split("/");
-  const propertiesPage = pathArray[2];
+  const propertiesPage = pathArray[PROPERTIES_PAGE_POSITION];
 
   const page = parseInt(propertiesPage);
   return (
