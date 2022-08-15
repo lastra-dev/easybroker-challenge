@@ -19,7 +19,7 @@ void main() {
 
   test('Property.fromId() should return the Property with that ID', () async {
     // arrange
-    setUpHttpClientSuccess200(
+    setUpGetHttp200(
       url: url,
       mockHttpClient: mockHttpClient,
       responseFixture: responseFixture,

@@ -1,16 +1,19 @@
 import 'dart:io';
+import 'dart:convert';
 
 import 'package:server/eb_api/eb_api.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
 import 'package:shelf_router/shelf_router.dart';
+import 'package:server/models/contact_body.dart';
 import 'package:http/http.dart' as http;
 
 // Configure routes.
 final _router = Router()
   ..get('/', _rootHandler)
   ..get('/properties/<page>', _propertiesHandler)
-  ..get('/property/<id>', _propertyHandler);
+  ..get('/property/<id>', _propertyHandler)
+  ..post('/contact', _contactHandler);
 
 // Accept CORS.
 const corsHeaders = {
@@ -45,6 +48,25 @@ Future<Response> _propertiesHandler(Request request) async {
     var page = int.parse(request.params['page'] ?? badRequest);
     return Response.ok(
       await properties.fromPage(page),
+      headers: corsHeaders,
+    );
+  } catch (_) {
+    return Response.notFound('Route not found');
+  }
+}
+
+Future<Response> _contactHandler(Request request) async {
+  var contact = Contact(client: http.Client());
+  try {
+    // Handle incoming request.
+    var body = jsonDecode(await request.readAsString());
+
+    // Send body to EB API.
+    var response = await contact.sendMessage(ContactBody.fromJson(body));
+
+    // Return response to client.
+    return Response.ok(
+      response.body,
       headers: corsHeaders,
     );
   } catch (_) {

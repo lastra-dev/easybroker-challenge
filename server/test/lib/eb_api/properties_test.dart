@@ -27,7 +27,7 @@ void main() {
   test('Properties.fromPage() returns all properties from the given page',
       () async {
     // arange
-    setUpHttpClientSuccess200(
+    setUpGetHttp200(
       url: url,
       mockHttpClient: mockHttpClient,
       responseFixture: propertiesFixture,

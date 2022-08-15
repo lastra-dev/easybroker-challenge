@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
 
 class Property {
-  Property({required this.client});
+  const Property({required this.client});
 
   final http.Client client;
 
