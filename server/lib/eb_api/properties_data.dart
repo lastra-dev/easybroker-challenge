@@ -1,10 +1,12 @@
 import 'package:http/http.dart' as http;
 
+/// Handles multiple properties data.
 class PropertiesData {
   const PropertiesData({required this.client});
 
   final http.Client client;
 
+  /// Returns an [http.Response] containing multiple properties from a single page.
   Future<http.Response> fromPage(int page) async {
     var queryParameters = {
       'limit': '15',

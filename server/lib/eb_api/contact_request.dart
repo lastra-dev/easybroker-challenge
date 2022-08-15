@@ -3,11 +3,13 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:server/models/contact_body.dart';
 
+/// Handles contact requests data.
 class ContactRequest {
   ContactRequest({required this.client});
 
   final http.Client client;
 
+  /// Sends a post request to the contact requests API.
   Future<http.Response> sendMessage(ContactBody contactBody) async {
     var url = Uri.https('api.stagingeb.com', '/v1/contact_requests');
     var response = await client.post(url,

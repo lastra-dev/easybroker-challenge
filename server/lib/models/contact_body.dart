@@ -1,5 +1,8 @@
 import 'package:equatable/equatable.dart';
 
+/// Body of contact request model.
+///
+/// Model class for ContactRequest API endpoint.
 class ContactBody extends Equatable {
   const ContactBody({
     required this.name,
@@ -17,6 +20,7 @@ class ContactBody extends Equatable {
   final String message;
   final String source;
 
+  /// Creates a ContactBody object from a Json Map.
   ContactBody.fromJson(Map<String, dynamic> json)
       : name = json['name'],
         phone = json['phone'],
@@ -25,6 +29,7 @@ class ContactBody extends Equatable {
         message = json['message'],
         source = json['source'];
 
+  /// Creates a Json Map from this object.
   Map<String, dynamic> toJson() => {
         'name': name,
         'phone': phone,
