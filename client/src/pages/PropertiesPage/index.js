@@ -33,11 +33,7 @@ const PropertiesPage = () => {
     <Box padding={2}>
       <Stack justifyContent="center" alignItems="center" spacing={2}>
         <PaginationLink pageCount={pagination ? pagination.limit : 1} />
-        <Grid
-          item
-          container
-          spacing={2}
-        >
+        <Grid item container spacing={2}>
           {propertiesToRender}
         </Grid>
       </Stack>

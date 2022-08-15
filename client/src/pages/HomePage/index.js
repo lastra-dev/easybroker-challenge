@@ -16,7 +16,12 @@ const HomePage = () => {
           <br />
           for a good life
         </Typography>
-        <Typography align="center" variant="h6" fontWeight={500} color="primary">
+        <Typography
+          align="center"
+          variant="h6"
+          fontWeight={500}
+          color="primary"
+        >
           Checkout your dream property now!
         </Typography>
         <Button href="/properties" variant="contained" size="large">
