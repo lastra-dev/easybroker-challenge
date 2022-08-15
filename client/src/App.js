@@ -1,7 +1,7 @@
 import AppRoutes from "AppRoutes";
 import Box from "@mui/material/Box";
 import NavBar from "components/NavBar";
-import toggleTheme from "helpers/toggleTheme";
+import toggleLocalStorageTheme from "helpers/toggleLocalStorageTheme";
 import { createContext, useState, useMemo, useContext } from "react";
 import {
   ThemeProvider,
@@ -39,7 +39,7 @@ const App = () => {
     () => ({
       toggleColorMode: () => {
         setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
-        toggleTheme();
+        toggleLocalStorageTheme();
       },
     }),
     []

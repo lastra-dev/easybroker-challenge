@@ -1,4 +1,4 @@
-import Contact from "services/Contact";
+import ContactRequest from "services/ContactRequest";
 import success from "helpers/fixtures/success";
 
 const tBody = {
@@ -12,7 +12,7 @@ const tBody = {
 
 test("Expect Contact.sendMessage() to POST a message", async () => {
   // act
-  const response = await Contact.sendMessage(tBody);
+  const response = await ContactRequest.sendMessage(tBody);
 
   // assert
   expect(response.data).toStrictEqual(success);

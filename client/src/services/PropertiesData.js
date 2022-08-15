@@ -1,6 +1,6 @@
 import api from "services/api";
 
-class Properties {
+class PropertiesData {
   static async fromPage(page) {
     try {
       const response = await api.get(`/properties/${page}`);
@@ -11,4 +11,4 @@ class Properties {
   }
 }
 
-export default Properties;
+export default PropertiesData;

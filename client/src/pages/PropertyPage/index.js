@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import HouseIcon from "@mui/icons-material/House";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import Property from "services/Property";
+import PropertyData from "services/PropertyData";
 import ContactForm from "components/ContactForm";
 import { useCallback, useEffect, useState } from "react";
 import grey from "@mui/material/colors/grey";
@@ -15,7 +15,7 @@ const PropertyPage = () => {
   const [property, setProperty] = useState({});
 
   const fetchProperty = useCallback(async () => {
-    const property = await Property.fromId(propertyId);
+    const property = await PropertyData.fromId(propertyId);
     setProperty(property);
   }, [propertyId]);
 

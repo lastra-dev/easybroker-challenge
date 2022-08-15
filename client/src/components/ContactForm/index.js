@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import Contact from "services/Contact";
+import ContactRequest from "services/ContactRequest";
 import Alert from "@mui/material/Alert";
 import { useState } from "react";
 
@@ -25,7 +25,7 @@ const ContactForm = ({ propertyId }) => {
   };
 
   const sendMessage = async () => {
-    return await Contact.sendMessage({
+    return await ContactRequest.sendMessage({
       name: name,
       phone: phone,
       email: email,

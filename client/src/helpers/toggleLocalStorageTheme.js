@@ -1,4 +1,4 @@
-const toggleTheme = () => {
+const toggleLocalStorageTheme = () => {
   const paletteMode = localStorage.getItem("paletteMode");
   localStorage.setItem(
     "paletteMode",
@@ -6,4 +6,4 @@ const toggleTheme = () => {
   );
 };
 
-export default toggleTheme;
+export default toggleLocalStorageTheme;

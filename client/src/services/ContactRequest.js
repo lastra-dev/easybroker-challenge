@@ -1,6 +1,6 @@
 import api from "services/api";
 
-class Contact {
+class ContactRequest {
   static async sendMessage(body) {
     try {
       const response = await api.post("/contact", JSON.stringify(body));
@@ -11,4 +11,4 @@ class Contact {
   }
 }
 
-export default Contact;
+export default ContactRequest;

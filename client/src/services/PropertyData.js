@@ -1,6 +1,6 @@
 import api from "services/api";
 
-class Property {
+class PropertyData {
   static async fromId(id) {
     try {
       const response = await api.get(`/property/${id}`);
@@ -11,4 +11,4 @@ class Property {
   }
 }
 
-export default Property;
+export default PropertyData;

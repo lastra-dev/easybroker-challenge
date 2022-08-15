@@ -2,7 +2,7 @@ import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import PropertyCard from "components/PropertyCard";
-import Properties from "services/Properties";
+import PropertiesData from "services/PropertiesData";
 import PaginationLink from "components/PaginationLink";
 import { useCallback, useEffect, useState } from "react";
 
@@ -14,7 +14,7 @@ const PropertiesPage = () => {
   const propertiesPage = pathArray[PROPERTY_PAGE_POSITION];
 
   const fetchProperties = useCallback(async () => {
-    const properties = await Properties.fromPage(propertiesPage);
+    const properties = await PropertiesData.fromPage(propertiesPage);
     setProperties(properties.content);
     setPagination(properties.pagination);
   }, [propertiesPage]);
