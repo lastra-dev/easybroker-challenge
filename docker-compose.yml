@@ -1,14 +1,14 @@
-version: "3.8"
+version: "2.2"
 services:
   goodhouse-client:
-    image: goodhouse-client:1.0
+    image: lastradev/goodhouse-client:latest
     network_mode: host
     restart: unless-stopped
     container_name: goodhouse-client
     depends_on:
       - goodhouse-server
   goodhouse-server:
-    image: goodhouse-server:1.0
+    image: lastradev/goodhouse-server:latest
     network_mode: host
     restart: unless-stopped
     container_name: goodhouse-server
