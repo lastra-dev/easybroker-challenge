@@ -7,7 +7,6 @@
   <br>
   👍 [Checkout the documentation](https://lastra-dev.github.io/easybroker-challenge/)
   <br>
-  💻 [Test the app](https://goodhouse.lastradev.com)
 </div>
 
 ## Features
